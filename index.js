@@ -1,9 +1,8 @@
-// TODO: Include packages needed for this application
+// bringing inquirer into vscode. 
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown.js")
 
 // TODO: Create an array of questions for user input
-const licenses = ["License 1", "License 2", "License 3"]
 const questions = [
     {
         name: "title",
@@ -37,7 +36,7 @@ const questions = [
         name: "license",
         type: "list",
         message: "Choose the license being used:",
-        choices: licenses,
+        choices: ["License 1", "License 2", "License 3"]
     },
     {
         name: "contributing",
@@ -45,34 +44,22 @@ const questions = [
         message: "List your contributors. Separate by comma again:"
     },
     {
-        name: "test",
-        type: "confirm",
-        message: "Do you want to test your project?"
-    },
-    {
         name: "questions",
         type: "input",
         message: "Do you have any questions? If so, separate by comma once more:"
+    },
+    {
+        name: "test",
+        type: "confirm",
+        message: "Do you want to test your project?"
     }
 
 ];
 
-// inquirer
-//     .prompt([
-//         {
-//             name: "user_name",
-//             type: "input",
-//             message: "What is your name?",
-//         },
-//     ])
-//     .then((answer) => {
-//         console.log("Hello " + answer.user_name);
-//     });
-
-// // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {
-
-// }
+// TODO: Create a function to write README file
+function writeToFile(fileName, data) {
+    
+}
 
 // TODO: Create a function to initialize app
 function init() {
