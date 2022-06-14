@@ -1,6 +1,6 @@
 // bringing inquirer into vscode. 
 const inquirer = require("inquirer");
-const generateMarkdown = require("./utils/generateMarkdown.js")
+const utils = require("./utils/generateMarkdown.js")
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -25,7 +25,7 @@ const questions = [
     {
         name: "installation",
         type: "input",
-        message: "What's the installation process. Separate each step by a comma, please:"
+        message: "What's the installation process?"
     },
     {
         name: "usage",
@@ -41,12 +41,12 @@ const questions = [
     {
         name: "contributing",
         type: "input",
-        message: "List your contributors. Separate by comma again:"
+        message: "List your contributors:"
     },
     {
         name: "questions",
         type: "input",
-        message: "Do you have any questions? If so, separate by comma once more:"
+        message: "Do you have any questions?"
     },
     {
         name: "test",
@@ -56,19 +56,8 @@ const questions = [
 
 ];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    
-}
 
-// TODO: Create a function to initialize app
-function init() {
-    inquirer.prompt(questions)
-    .then(answers => generateMarkdown(answers))
-    .catch(err => console.error(err))
-}
-
-// // Function call to initialize app
-init();
-
-
+inquirer.prompt(questions).then((answers) => {
+    console.log(answers);
+    utils.generateMarkdown(answers);
+})
