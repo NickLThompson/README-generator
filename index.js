@@ -1,8 +1,8 @@
-// bringing inquirer into vscode. 
+// bringing inquirer into vscode and linking the generateMarkdown document here
 const inquirer = require("inquirer");
 const utils = require("./utils/generateMarkdown.js")
 
-// TODO: Create an array of questions for user input
+// array of questions being asked in the console
 const questions = [
     {
         name: "title",
@@ -14,14 +14,6 @@ const questions = [
         type: "input",
         message: "Write a good description of your project! Press enter when you're done:"
     },
-    // Table of Contents
-    // 1. [Description](#description)
-    // 2. [Installation](#installation)
-    // 3. [Usage](#usage)
-    // 4. [License](#license)
-    // 5. [Contributors](#contributors)
-    // 6. [Test](#test)
-    // 7. [Questions](#questions)
     {
         name: "installation",
         type: "input",
@@ -36,7 +28,13 @@ const questions = [
         name: "license",
         type: "list",
         message: "Choose the license being used:",
-        choices: ["License 1", "License 2", "License 3"]
+        choices: [
+            "MIT",
+            "GPL",
+            "Apache",
+            "Apache 2",
+            "BSD",
+        ]
     },
     {
         name: "contributing",
@@ -50,9 +48,19 @@ const questions = [
     },
     {
         name: "test",
-        type: "confirm",
-        message: "Do you want to test your project?"
-    }
+        type: "input",
+        message: "How do you test your code?"
+    },
+    {
+        name: "gitHub",
+        type: "input",
+        message: "What is your GitHub username?"
+    },
+    {
+        name: "email",
+        type: "input",
+        message: "What is your email address?"
+    },
 
 ];
 

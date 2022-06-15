@@ -15,6 +15,21 @@
 
 const fs = require("fs");
 
+const generateLicense = (type) => {
+    let color;
+    if (type === "BSD") color = "red";
+    if (type === "NPM") color = "orange";
+    if (type === "GPL") color = "lightblue";
+    if (type === "Apache") color = "purple";
+    if (type === "MIT") color = "green";
+
+    return (
+      `
+<h3>License</h3>
+<img src = https://img.shields.io/badge/license-${type}-${color}" alt = "badge-${type}" height = "40" />`
+    )
+  }
+
 const generateMarkdown = ({
   title,
   description,
@@ -22,12 +37,15 @@ const generateMarkdown = ({
   usage,
   license,
   contributing,
-  questions
+  questions,
+  test,
+  gitHub,
+  email,
 }) => {
-  console.log("generating page...");
   const template = (
-`
+    `
 # ${title}
+
 
 ## Table of Contents
 1. [Description](#description)
@@ -35,32 +53,45 @@ const generateMarkdown = ({
 3. [Usage](#usage)
 4. [License](#license)
 5. [Contributors](#contributors)
-6. [Test](#test)
-7. [Questions](#questions)
+6. [Questions](#questions)
+7. [Test](#test)
+8. [GitHub](#information)
+9. [Email](#information)
 
 ## Description
 ${description}
 
+
 ## Installation
 ${installation}
+
 
 ## Usage
 ${usage}
 
+
 ## License
-${license}
+${generateLicense(license)}
 
 ## Contributors
 ${contributing}
 
+
 ## Questions
 ${questions}
 
+
 ## Test
+${test}
+
+
+## Information
+${gitHub}
+${email}
+
 `
   );
- fs.writeFileSync("./utils/README.md", template)
- console.log("template generated!");
+  fs.writeFileSync("./utils/README.md", template)
   process.exit();
 };
 
